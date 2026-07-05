@@ -124,3 +124,63 @@ a {
 .wb-button.secondary:hover {
   background: var(--wb-mint-soft);
 }
+
+/* ============================================================
+   RESPONSIVE GLOBAL — aplica a todas las páginas del dashboard
+   (listados, formularios de crear/editar, tablas)
+   ============================================================ */
+
+/* Menos padding en el contenido dentro del dashboard en móvil */
+@media (max-width: 768px) {
+  .page-content {
+    padding: 16px !important;
+  }
+}
+
+/* Encabezado de cada listado: título + botón "Nuevo X" */
+@media (max-width: 600px) {
+  .page-header {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  .page-header button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Buscador de las tablas ocupa todo el ancho en móvil */
+@media (max-width: 600px) {
+  .search-field {
+    max-width: 100% !important;
+  }
+}
+
+/* Tablas: fuerza scroll horizontal en vez de aplastar columnas */
+@media (max-width: 700px) {
+  .table-wrapper .wb-table,
+  .table-wrapper table {
+    min-width: 640px;
+  }
+}
+
+/* Tarjetas de formularios (crear/editar) con menos padding en móvil */
+@media (max-width: 600px) {
+  .form-card {
+    padding: 24px 20px !important;
+  }
+  .page-wrapper {
+    padding: 0 4px;
+  }
+}
+
+/* Botones de acción (Cancelar/Guardar) apilados en móvil */
+@media (max-width: 480px) {
+  .actions {
+    flex-direction: column-reverse !important;
+    align-items: stretch !important;
+  }
+  .actions button {
+    width: 100% !important;
+  }
+}
