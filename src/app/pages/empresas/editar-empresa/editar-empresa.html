@@ -1,0 +1,37 @@
+<div class="page-wrapper">
+  <div class="page-header">
+    <button mat-icon-button (click)="cancelar()">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <h1>Editar empresa</h1>
+  </div>
+
+  <div class="loading-box" *ngIf="loading">
+    <mat-spinner diameter="40"></mat-spinner>
+  </div>
+
+  <form *ngIf="!loading" [formGroup]="form" (ngSubmit)="guardar()" class="form-card">
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre de la empresa</mat-label>
+      <input matInput formControlName="nombre" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Rubro</mat-label>
+      <input matInput formControlName="rubro" />
+    </mat-form-field>
+
+    <div class="toggle-row">
+      <span>Empresa activa</span>
+      <mat-slide-toggle formControlName="estado"></mat-slide-toggle>
+    </div>
+
+    <div class="actions">
+      <button type="button" mat-stroked-button (click)="cancelar()">Cancelar</button>
+      <button type="submit" class="wb-btn-primary" [disabled]="saving">
+        <mat-spinner *ngIf="saving" diameter="20"></mat-spinner>
+        <span *ngIf="!saving">Guardar cambios</span>
+      </button>
+    </div>
+  </form>
+</div>

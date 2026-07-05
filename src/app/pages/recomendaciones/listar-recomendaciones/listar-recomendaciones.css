@@ -1,0 +1,67 @@
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.page-header h1 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  margin: 0;
+  color: var(--wb-text);
+}
+.page-header p {
+  color: #888;
+  margin: 4px 0 0;
+}
+.page-header button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.card {
+  background: var(--wb-white);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+}
+
+.search-field {
+  max-width: 340px;
+  margin-bottom: 12px;
+}
+.loading-box {
+  display: flex;
+  justify-content: center;
+  padding: 60px 0;
+}
+.table-wrapper {
+  overflow-x: auto;
+}
+.wb-table {
+  width: 100%;
+}
+.no-data {
+  text-align: center;
+  padding: 32px;
+  color: #999;
+}
+
+.desc-cell {
+  max-width: 360px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.delete-icon {
+  color: #d9534f;
+}
+
+@media (max-width: 600px) {
+  .page-header {
+    flex-direction: column;
+  }
+}

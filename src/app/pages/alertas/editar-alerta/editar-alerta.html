@@ -1,0 +1,48 @@
+<div class="page-wrapper">
+  <div class="page-header">
+    <button mat-icon-button (click)="cancelar()">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <h1>Editar alerta</h1>
+  </div>
+
+  <div class="loading-box" *ngIf="loading">
+    <mat-spinner diameter="40"></mat-spinner>
+  </div>
+
+  <form *ngIf="!loading" [formGroup]="form" (ngSubmit)="guardar()" class="form-card">
+    <mat-form-field appearance="outline">
+      <mat-label>Registro de bienestar</mat-label>
+      <mat-select formControlName="idRegistro">
+        <mat-option *ngFor="let r of registros" [value]="r.idRegistro">
+          {{ r.empleado.usuario.nombre }} - Estrés {{ r.nivelEstres }}/10 ({{ r.fecha }})
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Tipo de alerta</mat-label>
+      <mat-select formControlName="tipo">
+        <mat-option *ngFor="let t of tiposAlerta" [value]="t">{{ t }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Mensaje</mat-label>
+      <textarea matInput formControlName="mensaje" rows="3"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Fecha</mat-label>
+      <input matInput type="date" formControlName="fecha" />
+    </mat-form-field>
+
+    <div class="actions">
+      <button type="button" mat-stroked-button (click)="cancelar()">Cancelar</button>
+      <button type="submit" class="wb-btn-primary" [disabled]="saving">
+        <mat-spinner *ngIf="saving" diameter="20"></mat-spinner>
+        <span *ngIf="!saving">Guardar cambios</span>
+      </button>
+    </div>
+  </form>
+</div>

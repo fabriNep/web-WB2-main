@@ -1,0 +1,49 @@
+:host {
+  display: block;
+  height: 100%;
+  background-color: var(--wb-white);
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 24px 20px;
+}
+
+.logo-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--wb-primary), var(--wb-primary-dark));
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.logo-text {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--wb-text);
+}
+
+.nav-list {
+  padding: 8px 12px;
+}
+
+a.mat-mdc-list-item {
+  border-radius: 10px;
+  margin-bottom: 4px;
+  color: #555;
+}
+
+.active-link {
+  background-color: var(--wb-accent) !important;
+  color: var(--wb-primary-dark) !important;
+  font-weight: 600;
+}

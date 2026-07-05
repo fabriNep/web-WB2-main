@@ -1,0 +1,48 @@
+<div class="auth-wrapper">
+  <div class="brand-panel">
+    <div class="brand-content">
+      <div class="logo-circle">W</div>
+      <h1>Bienvenido de nuevo</h1>
+      <p>Monitorea y prevé el bienestar mental de tu equipo con WellnessBuddy.</p>
+    </div>
+  </div>
+
+  <div class="form-panel">
+    <div class="form-card">
+      <h2>Iniciar sesión</h2>
+      <p class="subtitle">
+        ¿No tienes una cuenta?
+        <a routerLink="/auth/register">Regístrate</a>
+      </p>
+
+      <form [formGroup]="form" (ngSubmit)="submit()" class="form">
+        <mat-form-field appearance="outline">
+          <mat-label>Usuario</mat-label>
+          <input matInput formControlName="username" autocomplete="username" />
+          <mat-icon matSuffix>person</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Contraseña</mat-label>
+          <input
+            matInput
+            [type]="hidePassword ? 'password' : 'text'"
+            formControlName="password"
+            autocomplete="current-password"
+          />
+          <button mat-icon-button matSuffix type="button" (click)="hidePassword = !hidePassword">
+            <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <button type="submit" class="wb-btn-primary submit-btn" [disabled]="loading">
+          <mat-spinner *ngIf="loading" diameter="22"></mat-spinner>
+          <span *ngIf="!loading">Iniciar sesión</span>
+        </button>
+      </form>
+
+      <p class="copyright">© 2024 - 2026 WellnessBuddy</p>
+      <p class="back-link-wrapper"><a routerLink="/" class="back-link">Volver</a></p>
+    </div>
+  </div>
+</div>

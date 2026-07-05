@@ -1,0 +1,61 @@
+:host {
+  display: block;
+  background: #ffffff;
+}
+
+.contact {
+  padding: clamp(3rem, 6vw, 5rem) clamp(1.25rem, 6vw, 5rem);
+}
+
+.section-heading {
+  margin-bottom: 2rem;
+}
+
+.help-grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.help-item {
+  border-radius: 8px;
+  min-height: 390px;
+  overflow: hidden;
+  position: relative;
+}
+
+.help-item img {
+  height: 100%;
+  inset: 0;
+  object-fit: cover;
+  position: absolute;
+  width: 100%;
+}
+
+.help-content {
+  background: rgba(38, 154, 126, 0.92);
+  border-radius: 8px;
+  color: #ffffff;
+  margin: 1rem;
+  padding: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+h3 {
+  font-size: 1.05rem;
+  margin: 0 0 0.5rem;
+  text-transform: uppercase;
+}
+
+p {
+  font-family: 'Roboto', Arial, sans-serif;
+  line-height: 1.5;
+  margin: 0.25rem 0 0;
+}
+
+@media (max-width: 900px) {
+  .help-grid {
+    grid-template-columns: 1fr;
+  }
+}

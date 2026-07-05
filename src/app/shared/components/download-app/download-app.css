@@ -1,0 +1,53 @@
+:host {
+  display: block;
+  background: linear-gradient(120deg, #ffffff 0%, var(--wb-mint-soft) 100%);
+}
+
+.download {
+  align-items: center;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 0.7fr);
+  padding: clamp(3rem, 6vw, 5rem) clamp(1.25rem, 6vw, 5rem);
+}
+
+.download-copy {
+  max-width: 680px;
+}
+
+.section-copy {
+  margin: 1rem 0 0;
+}
+
+.download-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.7rem;
+}
+
+.download-actions a {
+  display: inline-flex;
+}
+
+.download-actions img {
+  height: 52px;
+  object-fit: contain;
+  width: auto;
+}
+
+.phone-preview {
+  justify-self: center;
+  max-height: 430px;
+  object-fit: contain;
+}
+
+@media (max-width: 780px) {
+  .download {
+    grid-template-columns: 1fr;
+  }
+
+  .phone-preview {
+    max-height: 360px;
+  }
+}

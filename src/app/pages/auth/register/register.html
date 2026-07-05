@@ -1,0 +1,54 @@
+<div class="auth-wrapper">
+  <div class="brand-panel">
+    <div class="brand-content">
+      <div class="logo-circle">W</div>
+      <h1>Únete a WellnessBuddy</h1>
+      <p>Crea tu cuenta y empieza a cuidar el bienestar mental de tu equipo.</p>
+    </div>
+  </div>
+
+  <div class="form-panel">
+    <div class="form-card">
+      <h2>Crear cuenta</h2>
+      <p class="subtitle">
+        ¿Ya tienes una cuenta?
+        <a routerLink="/auth/login">Inicia sesión</a>
+      </p>
+
+      <form [formGroup]="form" (ngSubmit)="submit()" class="form">
+        <mat-form-field appearance="outline">
+          <mat-label>Nombre completo</mat-label>
+          <input matInput formControlName="nombre" />
+          <mat-icon matSuffix>badge</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Correo electrónico</mat-label>
+          <input matInput formControlName="email" type="email" />
+          <mat-icon matSuffix>mail</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Usuario</mat-label>
+          <input matInput formControlName="username" />
+          <mat-icon matSuffix>person</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Contraseña</mat-label>
+          <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password" />
+          <button mat-icon-button matSuffix type="button" (click)="hidePassword = !hidePassword">
+            <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <button type="submit" class="wb-btn-primary submit-btn" [disabled]="loading">
+          <mat-spinner *ngIf="loading" diameter="22"></mat-spinner>
+          <span *ngIf="!loading">Crear cuenta</span>
+        </button>
+      </form>
+
+      <p class="copyright">© 2024 - 2026 WellnessBuddy</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+:host {
+  display: block;
+  background: #ffffff;
+}
+
+.feature-strip {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  padding: 2rem clamp(1.25rem, 6vw, 5rem);
+}
+
+.feature-card {
+  align-items: flex-start;
+  border: 1px solid var(--wb-border);
+  border-radius: 8px;
+  display: flex;
+  gap: 1rem;
+  min-height: 150px;
+  padding: 1.2rem;
+}
+
+.feature-card img {
+  height: 58px;
+  object-fit: contain;
+  width: 58px;
+}
+
+h2 {
+  font-size: 1.05rem;
+  margin: 0 0 0.45rem;
+}
+
+p {
+  color: var(--wb-muted);
+  font-family: 'Roboto', Arial, sans-serif;
+  line-height: 1.55;
+  margin: 0;
+}
+
+@media (max-width: 860px) {
+  .feature-strip {
+    grid-template-columns: 1fr;
+  }
+}

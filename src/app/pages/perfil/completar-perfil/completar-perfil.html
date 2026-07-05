@@ -1,0 +1,34 @@
+<div class="wrapper">
+  <div class="form-card">
+    <div class="logo-circle">W</div>
+    <h1>Completa tu perfil laboral</h1>
+    <p class="subtitle">
+      Antes de continuar, cuéntanos en qué empresa trabajas para poder monitorear y cuidar tu
+      bienestar.
+    </p>
+
+    <div class="loading-box" *ngIf="loadingOptions">
+      <mat-spinner diameter="40"></mat-spinner>
+    </div>
+
+    <form *ngIf="!loadingOptions" [formGroup]="form" (ngSubmit)="guardar()" class="form">
+      <mat-form-field appearance="outline">
+        <mat-label>Empresa</mat-label>
+        <mat-select formControlName="idEmpresa">
+          <mat-option [value]="0" disabled>Selecciona tu empresa</mat-option>
+          <mat-option *ngFor="let e of empresas" [value]="e.idEmpresa">{{ e.nombre }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Cargo</mat-label>
+        <input matInput formControlName="cargo" placeholder="Ej. Desarrollador Frontend" />
+      </mat-form-field>
+
+      <button type="submit" class="wb-btn-primary submit-btn" [disabled]="saving">
+        <mat-spinner *ngIf="saving" diameter="20"></mat-spinner>
+        <span *ngIf="!saving">Completar perfil</span>
+      </button>
+    </form>
+  </div>
+</div>

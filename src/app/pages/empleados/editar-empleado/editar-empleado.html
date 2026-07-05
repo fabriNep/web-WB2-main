@@ -1,0 +1,50 @@
+<div class="page-wrapper">
+  <div class="page-header">
+    <button mat-icon-button (click)="cancelar()">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <h1>Editar empleado</h1>
+  </div>
+
+  <div class="loading-box" *ngIf="loading">
+    <mat-spinner diameter="40"></mat-spinner>
+  </div>
+
+  <form *ngIf="!loading" [formGroup]="form" (ngSubmit)="guardar()" class="form-card">
+    <mat-form-field appearance="outline">
+      <mat-label>Usuario</mat-label>
+      <mat-select formControlName="idUsuario">
+        <mat-option *ngFor="let u of usuarios" [value]="u.idUsuario">
+          {{ u.nombre }} ({{ u.username }})
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Empresa</mat-label>
+      <mat-select formControlName="idEmpresa">
+        <mat-option *ngFor="let e of empresas" [value]="e.idEmpresa">
+          {{ e.nombre }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Cargo</mat-label>
+      <input matInput formControlName="cargo" />
+    </mat-form-field>
+
+    <div class="toggle-row">
+      <span>Empleado activo</span>
+      <mat-slide-toggle formControlName="estado"></mat-slide-toggle>
+    </div>
+
+    <div class="actions">
+      <button type="button" mat-stroked-button (click)="cancelar()">Cancelar</button>
+      <button type="submit" class="wb-btn-primary" [disabled]="saving">
+        <mat-spinner *ngIf="saving" diameter="20"></mat-spinner>
+        <span *ngIf="!saving">Guardar cambios</span>
+      </button>
+    </div>
+  </form>
+</div>

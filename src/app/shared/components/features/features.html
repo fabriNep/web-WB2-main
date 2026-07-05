@@ -1,0 +1,11 @@
+<section class="feature-strip" aria-label="Resumen de beneficios">
+  @for (item of features; track item.title) {
+    <article class="feature-card">
+      <img [src]="item.icon" [alt]="item.title" />
+      <div>
+        <h2>{{ item.title }}</h2>
+        <p>{{ item.copy }}</p>
+      </div>
+    </article>
+  }
+</section>

@@ -1,0 +1,55 @@
+<div class="page-wrapper">
+  <div class="page-header">
+    <button mat-icon-button (click)="cancelar()">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <h1>Nueva evaluación</h1>
+  </div>
+
+  <div class="loading-box" *ngIf="loadingOptions">
+    <mat-spinner diameter="40"></mat-spinner>
+  </div>
+
+  <form *ngIf="!loadingOptions" [formGroup]="form" (ngSubmit)="guardar()" class="form-card">
+    <mat-form-field appearance="outline" *ngIf="auth.isAdmin()">
+      <mat-label>Empleado</mat-label>
+      <mat-select formControlName="idEmpleado">
+        <mat-option [value]="0" disabled>Selecciona un empleado</mat-option>
+        <mat-option *ngFor="let e of empleados" [value]="e.idEmpleado">
+          {{ e.usuario.nombre }} - {{ e.cargo }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" *ngIf="!auth.isAdmin() && miEmpleado">
+      <mat-label>Empleado</mat-label>
+      <input matInput [value]="miEmpleado.usuario.nombre" disabled />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Pregunta</mat-label>
+      <input matInput formControlName="pregunta" list="preguntas-list" />
+      <datalist id="preguntas-list">
+        <option *ngFor="let p of preguntasSugeridas" [value]="p"></option>
+      </datalist>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Respuesta</mat-label>
+      <textarea matInput formControlName="respuesta" rows="3"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Fecha</mat-label>
+      <input matInput type="date" formControlName="fecha" />
+    </mat-form-field>
+
+    <div class="actions">
+      <button type="button" mat-stroked-button (click)="cancelar()">Cancelar</button>
+      <button type="submit" class="wb-btn-primary" [disabled]="saving">
+        <mat-spinner *ngIf="saving" diameter="20"></mat-spinner>
+        <span *ngIf="!saving">Crear evaluación</span>
+      </button>
+    </div>
+  </form>
+</div>

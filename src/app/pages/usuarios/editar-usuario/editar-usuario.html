@@ -1,0 +1,51 @@
+<div class="page-header">
+  <button mat-icon-button routerLink="/usuarios"><mat-icon>arrow_back</mat-icon></button>
+  <div>
+    <h1>Editar usuario</h1>
+    <p>Actualiza la información de la cuenta.</p>
+  </div>
+</div>
+
+<div class="loading-box" *ngIf="loading">
+  <mat-spinner diameter="40"></mat-spinner>
+</div>
+
+<div class="card" *ngIf="!loading">
+  <form [formGroup]="form" (ngSubmit)="guardar()" class="form-grid">
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre completo</mat-label>
+      <input matInput formControlName="nombre" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Correo electrónico</mat-label>
+      <input matInput formControlName="email" type="email" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Usuario</mat-label>
+      <input matInput formControlName="username" />
+    </mat-form-field>
+
+    <div class="roles-box">
+      <span class="roles-label">Roles asignados</span>
+      <mat-chip-set>
+        <mat-chip *ngFor="let r of usuarioOriginal.roles" [class.chip-admin]="r.rol === 'ADMIN'">
+          {{ r.rol }}
+        </mat-chip>
+      </mat-chip-set>
+    </div>
+
+    <mat-slide-toggle formControlName="statusUsuario" color="primary" class="toggle">
+      Cuenta activa
+    </mat-slide-toggle>
+
+    <div class="actions">
+      <button mat-button type="button" routerLink="/app/usuarios">Cancelar</button>
+      <button type="submit" class="wb-btn-primary" [disabled]="saving">
+        <mat-spinner *ngIf="saving" diameter="20"></mat-spinner>
+        <span *ngIf="!saving">Guardar cambios</span>
+      </button>
+    </div>
+  </form>
+</div>

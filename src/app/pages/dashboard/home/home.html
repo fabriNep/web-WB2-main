@@ -1,0 +1,69 @@
+<div class="loading-box" *ngIf="loading">
+  <mat-spinner diameter="40"></mat-spinner>
+</div>
+
+<div *ngIf="!loading">
+  <!-- Vista ADMIN -->
+  <div *ngIf="auth.isAdmin()">
+    <h1 class="page-title">Panel administrativo</h1>
+    <p class="page-subtitle">Vista global de WellnessBuddy.</p>
+
+    <div class="cards-grid">
+      <div class="stat-card">
+        <mat-icon class="stat-icon">people</mat-icon>
+        <div>
+          <span class="stat-value">{{ totalUsuarios }}</span>
+          <span class="stat-label">Usuarios registrados</span>
+        </div>
+      </div>
+      <div class="stat-card">
+        <mat-icon class="stat-icon">business</mat-icon>
+        <div>
+          <span class="stat-value">{{ totalEmpresas }}</span>
+          <span class="stat-label">Empresas</span>
+        </div>
+      </div>
+      <div class="stat-card">
+        <mat-icon class="stat-icon">badge</mat-icon>
+        <div>
+          <span class="stat-value">{{ totalEmpleados }}</span>
+          <span class="stat-label">Empleados</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vista USER -->
+  <div *ngIf="!auth.isAdmin()">
+    <h1 class="page-title">Hola, {{ auth.getUsername() }} 👋</h1>
+    <p class="page-subtitle">Este es tu resumen de bienestar personal.</p>
+
+    <div class="cards-grid">
+      <div class="stat-card" *ngIf="ultimoRegistro">
+        <mat-icon class="stat-icon">monitor_heart</mat-icon>
+        <div>
+          <span class="stat-value">{{ ultimoRegistro.nivelEstres }}/10</span>
+          <span class="stat-label">Último nivel de estrés ({{ ultimoRegistro.estadoAnimo }})</span>
+        </div>
+      </div>
+      <div class="stat-card">
+        <mat-icon class="stat-icon">notifications_active</mat-icon>
+        <div>
+          <span class="stat-value">{{ misAlertas.length }}</span>
+          <span class="stat-label">Alertas recibidas</span>
+        </div>
+      </div>
+      <div class="stat-card">
+        <mat-icon class="stat-icon">lightbulb</mat-icon>
+        <div>
+          <span class="stat-value">{{ misRecomendaciones.length }}</span>
+          <span class="stat-label">Recomendaciones para ti</span>
+        </div>
+      </div>
+    </div>
+
+    <a routerLink="/app/registros/crear" class="wb-btn-primary create-btn">
+      <mat-icon>add</mat-icon> Registrar mi bienestar de hoy
+    </a>
+  </div>
+</div>

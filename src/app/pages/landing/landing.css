@@ -1,0 +1,8 @@
+:host {
+  display: block;
+  background: var(--wb-surface);
+}
+
+main {
+  overflow: hidden;
+}

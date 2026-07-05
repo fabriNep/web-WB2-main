@@ -1,0 +1,24 @@
+<section class="contact" id="contacto">
+  <div class="section-heading">
+    <p class="section-eyebrow">Contacto</p>
+    <h2 class="section-title">Necesitas ayuda?</h2>
+    <p class="section-copy">
+      Resuelve tus consultas facil y rapido con nuestros canales de atencion.
+    </p>
+  </div>
+
+  <div class="help-grid">
+    @for (item of channels; track item.title) {
+      <article class="help-item">
+        <img [src]="item.image" [alt]="item.title" />
+        <div class="help-content">
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.copy }}</p>
+          @if (item.extra) {
+            <p>{{ item.extra }}</p>
+          }
+        </div>
+      </article>
+    }
+  </div>
+</section>

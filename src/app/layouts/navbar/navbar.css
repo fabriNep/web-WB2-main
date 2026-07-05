@@ -1,0 +1,22 @@
+.navbar {
+  background-color: var(--wb-white) !important;
+  color: var(--wb-text) !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.user-info {
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+}
+.user-info strong {
+  font-family: 'Poppins', sans-serif;
+  color: var(--wb-text);
+}
+.user-info small {
+  color: #888;
+}

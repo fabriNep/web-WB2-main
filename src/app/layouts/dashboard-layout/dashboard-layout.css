@@ -1,0 +1,14 @@
+.container {
+  height: 100vh;
+}
+
+.sidenav {
+  width: 260px;
+  border-right: 1px solid var(--wb-border);
+}
+
+.page-content {
+  padding: 28px;
+  background-color: var(--wb-gray);
+  min-height: calc(100vh - 64px);
+}

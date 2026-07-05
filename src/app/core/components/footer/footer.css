@@ -1,0 +1,30 @@
+:host {
+  display: block;
+}
+
+.footer {
+  align-items: center;
+  background: #73d1b4;
+  color: #10231f;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding: 1.25rem;
+  text-align: center;
+}
+
+img {
+  height: 34px;
+  object-fit: contain;
+  width: auto;
+}
+
+small,
+p {
+  margin: 0;
+}
+
+p {
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 0.9rem;
+}

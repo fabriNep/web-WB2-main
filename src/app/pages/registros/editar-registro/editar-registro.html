@@ -1,0 +1,50 @@
+<div class="page-wrapper">
+  <div class="page-header">
+    <button mat-icon-button (click)="cancelar()">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <h1>Editar registro</h1>
+  </div>
+
+  <div class="loading-box" *ngIf="loading">
+    <mat-spinner diameter="40"></mat-spinner>
+  </div>
+
+  <form *ngIf="!loading" [formGroup]="form" (ngSubmit)="guardar()" class="form-card">
+    <mat-form-field appearance="outline">
+      <mat-label>Empleado</mat-label>
+      <mat-select formControlName="idEmpleado">
+        <mat-option *ngFor="let e of empleados" [value]="e.idEmpleado">
+          {{ e.usuario.nombre }} - {{ e.cargo }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="slider-field">
+      <label>Nivel de estrés: {{ form.get('nivelEstres')?.value }}/10</label>
+      <mat-slider min="1" max="10" step="1" discrete>
+        <input matSliderThumb formControlName="nivelEstres" />
+      </mat-slider>
+    </div>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Estado de ánimo</mat-label>
+      <mat-select formControlName="estadoAnimo">
+        <mat-option *ngFor="let estado of estadosAnimo" [value]="estado">{{ estado }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Fecha</mat-label>
+      <input matInput type="date" formControlName="fecha" />
+    </mat-form-field>
+
+    <div class="actions">
+      <button type="button" mat-stroked-button (click)="cancelar()">Cancelar</button>
+      <button type="submit" class="wb-btn-primary" [disabled]="saving">
+        <mat-spinner *ngIf="saving" diameter="20"></mat-spinner>
+        <span *ngIf="!saving">Guardar cambios</span>
+      </button>
+    </div>
+  </form>
+</div>

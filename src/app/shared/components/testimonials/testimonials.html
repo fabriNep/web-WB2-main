@@ -1,0 +1,16 @@
+<section class="testimonials" id="clientes">
+  <div class="section-heading">
+    <p class="section-eyebrow">Clientes</p>
+    <h2 class="section-title">Equipos que convierten datos de bienestar en acciones.</h2>
+  </div>
+
+  <div class="testimonial-grid">
+    @for (item of testimonials; track item.name) {
+      <article class="testimonial-card">
+        <img [src]="item.image" [alt]="item.name" />
+        <p class="quote">{{ item.quote }}</p>
+        <p class="person">{{ item.name }}</p>
+      </article>
+    }
+  </div>
+</section>
