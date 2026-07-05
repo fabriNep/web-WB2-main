@@ -1,2 +1,57 @@
-<p>chatbot works!</p>
-<h1>KURO YA TIENES LA APIKEY??</h1>
+<div class="chat-wrapper">
+  <div class="chat-header">
+    <div class="bot-avatar">
+      <mat-icon>smart_toy</mat-icon>
+    </div>
+    <div>
+      <h1>Asistente de bienestar</h1>
+      <p>Estoy aquí para escucharte y acompañarte.</p>
+    </div>
+  </div>
+
+  <div class="chat-body" #scrollContainer>
+    <div *ngIf="loadingHistorial" class="loading-box">
+      <mat-spinner diameter="36"></mat-spinner>
+    </div>
+
+    <div *ngIf="!loadingHistorial && mensajes.length === 0" class="empty-state">
+      <mat-icon>waving_hand</mat-icon>
+      <p>Hola 👋 ¿En qué puedo ayudarte hoy?</p>
+    </div>
+
+    <div *ngFor="let m of mensajes" class="msg-row" [class.msg-row-user]="m.autor === 'user'">
+      <div
+        class="bubble"
+        [class.bubble-user]="m.autor === 'user'"
+        [class.bubble-bot]="m.autor === 'bot'"
+      >
+        {{ m.texto }}
+      </div>
+    </div>
+
+    <div *ngIf="enviando" class="msg-row">
+      <div class="bubble bubble-bot bubble-typing">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="chat-input-row">
+    <mat-form-field appearance="outline" class="chat-field">
+      <input
+        matInput
+        [(ngModel)]="mensajeInput"
+        placeholder="Escribe cómo te sientes..."
+        (keydown.enter)="enviar()"
+        [disabled]="enviando"
+      />
+    </mat-form-field>
+    <button
+      class="wb-btn-primary send-btn"
+      (click)="enviar()"
+      [disabled]="enviando || !mensajeInput.trim()"
+    >
+      <mat-icon>send</mat-icon>
+    </button>
+  </div>
+</div>
