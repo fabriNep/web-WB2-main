@@ -41,7 +41,7 @@
 
       <ng-container matColumnDef="mensaje">
         <th mat-header-cell *matHeaderCellDef>Mensaje</th>
-        <td mat-cell *matCellDef="let a" class="mensaje-cell" [matTooltip]="a.mensaje" matTooltipPosition="above">{{ a.mensaje }}</td>
+        <td mat-cell *matCellDef="let a" class="mensaje-cell">{{ a.mensaje }}</td>
       </ng-container>
 
       <ng-container matColumnDef="fecha">

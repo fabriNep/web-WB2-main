@@ -54,11 +54,7 @@
   max-width: 260px;
   overflow: hidden;
   text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  white-space: normal;
-  line-height: 1.4;
+  white-space: nowrap;
 }
 .delete-icon {
   color: #d9534f;
