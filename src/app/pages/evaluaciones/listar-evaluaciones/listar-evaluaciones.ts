@@ -37,8 +37,13 @@ export class ListarEvaluaciones implements OnInit {
   dataSource = new MatTableDataSource<Evaluacion>([]);
   loading = true;
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild(MatPaginator) set paginator(mp: MatPaginator) {
+    if (mp) this.dataSource.paginator = mp;
+  }
+
+  @ViewChild(MatSort) set sort(ms: MatSort) {
+    if (ms) this.dataSource.sort = ms;
+  }
 
   ngOnInit(): void {
     this.displayedColumns = this.auth.isAdmin()
@@ -57,10 +62,6 @@ export class ListarEvaluaciones implements OnInit {
       next: (data) => {
         this.dataSource.data = data;
         this.loading = false;
-        setTimeout(() => {
-          this.dataSource.paginator = this.paginator;
-          this.dataSource.sort = this.sort;
-        });
       },
       error: () => {
         this.loading = false;

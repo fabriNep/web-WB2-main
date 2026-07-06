@@ -36,8 +36,13 @@ export class ListarEmpleados implements OnInit {
   dataSource = new MatTableDataSource<Empleado>([]);
   loading = true;
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild(MatPaginator) set paginator(mp: MatPaginator) {
+    if (mp) this.dataSource.paginator = mp;
+  }
+
+  @ViewChild(MatSort) set sort(ms: MatSort) {
+    if (ms) this.dataSource.sort = ms;
+  }
 
   ngOnInit(): void {
     this.cargar();
@@ -48,8 +53,6 @@ export class ListarEmpleados implements OnInit {
     this.empleadoService.listar().subscribe({
       next: (data) => {
         this.dataSource.data = data;
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
         this.loading = false;
       },
       error: () => {
