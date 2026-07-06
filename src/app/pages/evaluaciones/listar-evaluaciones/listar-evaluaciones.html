@@ -34,12 +34,28 @@
 
       <ng-container matColumnDef="pregunta">
         <th mat-header-cell *matHeaderCellDef>Pregunta</th>
-        <td mat-cell *matCellDef="let e" class="desc-cell">{{ e.pregunta }}</td>
+        <td
+          mat-cell
+          *matCellDef="let e"
+          class="desc-cell"
+          [matTooltip]="e.pregunta"
+          matTooltipPosition="above"
+        >
+          {{ e.pregunta }}
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="respuesta">
         <th mat-header-cell *matHeaderCellDef>Respuesta</th>
-        <td mat-cell *matCellDef="let e" class="desc-cell">{{ e.respuesta }}</td>
+        <td
+          mat-cell
+          *matCellDef="let e"
+          class="desc-cell"
+          [matTooltip]="e.respuesta"
+          matTooltipPosition="above"
+        >
+          {{ e.respuesta }}
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="fecha">

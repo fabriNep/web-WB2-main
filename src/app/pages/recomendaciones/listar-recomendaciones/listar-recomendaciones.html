@@ -34,7 +34,7 @@
 
       <ng-container matColumnDef="descripcion">
         <th mat-header-cell *matHeaderCellDef>Descripción</th>
-        <td mat-cell *matCellDef="let r" class="desc-cell">{{ r.descripcion }}</td>
+        <td mat-cell *matCellDef="let r" class="desc-cell" [matTooltip]="r.descripcion" matTooltipPosition="above">{{ r.descripcion }}</td>
       </ng-container>
 
       <ng-container matColumnDef="fecha">
